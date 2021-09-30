@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+ <head>
+     <title>Hidden</title>
+     <style>
+         .correct {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+         }
+         .wrong {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+         }
+         .count {
+             display: none;
+             width: 200px;
+             padding: 0.5rem;
+             margin-top: 1rem;
+         }
+     </style>
+ </head>
+<body>
+<h1>Hidden thingsby Sai Deep Konduri</h1>
+<h2>Getting input</h2>
+
+<form>
+    <label for="pass">Enter the secret word</label>
+    <input type ="password" id="pass" name="pass" value="Secret"> <br>
+
+    <div style="margin: 1rem 0">
+        <label style="padding-right: 2.9rem;" for="guessWord">Enter a guess. </label>
+        <input type ="text" id="guessWord" name="guessWord" autofocus> <br>
+    </div>
+
+    <input type="button" onclick="processGuess()" value="Check the guess">
+</form>
+
+<div class="correct count">correct count: 0</div>
+<div class="wrong count">wrong count: 0</div>
+
+<script> 
+var correct = 0;
+var wrong = 0;
+const correctEl = document.getElementsByClassName("correct")[0];
+const wrongEl = document.getElementsByClassName("wrong")[0];
+const passEl = document.getElementById("pass");
+const guessEl = document.getElementById("guessWord");
+function processGuess (){
+    
+    if(passEl.value === guessEl.value) {
+        correct++;
+        alert("Congratulations");
+        resetInputs();
+    }  else {
+        wrong++;
+        alert("Sorry");
+    } 
+
+    correctEl.innerText = `correct count: ${correct}`;
+    wrongEl.innerText = `wrong count: ${wrong}`;
+    correctEl.style.display="block";
+    wrongEl.style.display="block";
+}
+
+function resetInputs() {
+    passEl.value ="";
+    guessEl.value ="";
+}
+
+</script>
+
+</body>
+</html> 
