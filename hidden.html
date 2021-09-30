@@ -19,6 +19,12 @@
              padding: 0.5rem;
              margin-top: 1rem;
          }
+         .image {
+             width: 200px;
+             height: 200px;
+             cursor: pointer;
+             margin-top: 1rem;
+         }
      </style>
  </head>
 <body>
@@ -40,13 +46,19 @@
 <div class="correct count">correct count: 0</div>
 <div class="wrong count">wrong count: 0</div>
 
+<div class="container">
+    <img onclick="rotateImage()" src="images/plant1.jpg" alt="Money plant" class="image">
+</div>
+
 <script> 
 var correct = 0;
 var wrong = 0;
+var currentImage = 0;
 const correctEl = document.getElementsByClassName("correct")[0];
 const wrongEl = document.getElementsByClassName("wrong")[0];
 const passEl = document.getElementById("pass");
 const guessEl = document.getElementById("guessWord");
+const image = document.getElementsByClassName("image")[0];
 function processGuess (){
     
     if(passEl.value === guessEl.value) {
@@ -67,6 +79,31 @@ function processGuess (){
 function resetInputs() {
     passEl.value ="";
     guessEl.value ="";
+}
+
+function rotateImage() {
+    switch(currentImage) {
+        case 0: {
+            currentImage =1;
+            image.src ='images/plant2.jpg';
+            break;
+        }
+        case 1: {
+            currentImage = 2;
+            image.src = 'images/plant3.jpg';
+
+            break;
+        }
+        case 2: {
+            currentImage = 0;
+            image.src = 'images/plant1.jpg';
+
+            break;
+        }
+        default: {
+            break;
+        }
+    }
 }
 
 </script>
