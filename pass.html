@@ -24,30 +24,31 @@
              height: 200px;
              cursor: pointer;
              margin-top: 1rem;
+             object-fit: cover;
          }
      </style>
  </head>
 <body>
-<h1>Hidden thingsby Sai Deep Konduri</h1>
+<h1>Pass phrase by Sai Deep Konduri</h1>
 <h2>Getting input</h2>
 
 <form>
-    <label for="pass">Enter the secret word</label>
+    <label for="pass">Enter the secret phrase</label>
     <input type ="password" id="pass" name="pass" value="Secret"> <br>
 
     <div style="margin: 1rem 0">
-        <label style="padding-right: 2.9rem;" for="guessWord">Enter a guess. </label>
+        <label style="padding-right: 2.9rem;" for="guessWord">Enter a phrase </label>
         <input type ="text" id="guessWord" name="guessWord" autofocus> <br>
     </div>
 
-    <input type="button" onclick="processGuess()" value="Check the guess">
+    <input type="button" onclick="processPhrase()" value="Check the phrase">
 </form>
 
 <div class="correct count">correct count: 0</div>
 <div class="wrong count">wrong count: 0</div>
 
 <div class="container">
-    <img onclick="rotateImage()" src="images/plant1.jpg" alt="Money plant" class="image">
+    <img onclick="rotateImage()" src="images/img1.jpg" alt="Money plant" class="image">
 </div>
 
 <script> 
@@ -59,15 +60,15 @@ const wrongEl = document.getElementsByClassName("wrong")[0];
 const passEl = document.getElementById("pass");
 const guessEl = document.getElementById("guessWord");
 const image = document.getElementsByClassName("image")[0];
-function processGuess (){
+function processPhrase (){
     
     if(passEl.value === guessEl.value) {
         correct++;
-        alert("Congratulations");
+        alert("Access allowed");
         resetInputs();
     }  else {
         wrong++;
-        alert("Sorry");
+        alert("Access denied");
     } 
 
     correctEl.innerText = `correct count: ${correct}`;
@@ -85,18 +86,18 @@ function rotateImage() {
     switch(currentImage) {
         case 0: {
             currentImage =1;
-            image.src ='images/plant2.jpg';
+            image.src ='images/img2.jpg';
             break;
         }
         case 1: {
             currentImage = 2;
-            image.src = 'images/plant3.jpg';
+            image.src = 'images/img3.jpg';
 
             break;
         }
         case 2: {
             currentImage = 0;
-            image.src = 'images/plant1.jpg';
+            image.src = 'images/img1.jpg';
 
             break;
         }
