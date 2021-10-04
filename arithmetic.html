@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html>
-    <title>Maths Class</title>
- 
+<title>Maths Class</title>
+<style>
+    #result {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            width: 300px;
+         }
+</style>
 <body>
-<h1>Sai Deep Konduri computes</h1>
-<h2>Getting input</h2>
+    <h1>Sai Deep Konduri computes</h1>
+    <h2>Getting input</h2>
 
-<form>
-    <label for="base">Enter a base </label>
-    <input type ="number" id="base" name="base" min=1 max=50 step=1 value=10> <br>
+    <form>
+        <label for="base">Enter a base </label>
+        <input type="number" id="base" name="base" min=1 max=50 step=1 value=10> <br>
 
-    <label for="exponent">Enter an exponent </label>
-    <input type ="text" id="exponent" name="exponent" value="2" autofocus> <br>
+        <label for="exponent">Enter an exponent </label>
+        <input type="text" id="exponent" name="exponent" value="2" autofocus> <br>
 
-    <input type="button" onclick="powers()" value="Compute">
-</form>
+        <input type="button" onclick="powers()" value="Compute">
+    </form>
 
 
-<p id="result"> </p>
+    <p id="result"> </p>
 
-<script> 
+    <section class="form">
+        <form>
+            <input type="radio" id="plus" name="operation" value="plus" onclick="processRadio()">
+            <label for="plus">+</label></br>
 
-function powers (){
-    let base = document.getElementById("base").value;
-    let exp = parseInt(document.getElementById("exponent").value);
-    let result = "";
-    for(let i=1; i<= exp; i++) {
-        result =`${result} ${Math.pow(base, i)}`;
-    }
-    document.getElementById("result").innerText = result;
-}
-</script>
+            <input type="radio" id="minus" name="operation" onclick="processRadio()" value="minus">
+            <label for="minus">-</label></br>
+
+            <input type="radio" id="times" name="operation" onclick="processRadio()" value="times">
+            <label for="times">*</label></br>
+
+            <input type="radio" id="divide" name="operation" onclick="processRadio()" value="divide">
+            <label for="divide">/</label></br>
+        </form>
+
+    </section>
+
+    <script>
+
+        let baseEl = document.getElementById("base");
+        let expEl = document.getElementById("exponent");
+
+        function powers() {
+            let base = baseEl.value;
+            let exp = parseInt(expEl.value);
+            let result = "";
+            for (let i = 1; i <= exp; i++) {
+                result = `${result} ${Math.pow(base, i)}`;
+            }
+            document.getElementById("result").innerText = result;
+        }
+
+        function processRadio() {
+            let base = parseInt(baseEl.value);
+            let exp = parseInt(expEl.value);
+            let list = document.getElementsByName("operation");
+            let checkedEl;
+            let result;
+            for( let i=0; i< list.length; i++) {
+                if(list[i].checked) {
+                    checkedEl = list[i]
+                }
+            }
+            switch(checkedEl.value) {
+                case "plus": {
+                    result = base + exp;
+                    break;
+                }
+                case "minus": {
+                    result = base - exp;
+                    break;
+                }
+                case "times": {
+                    result = base * exp;
+                    break;
+                }
+                case "divide": {
+                    result = base / exp;
+                    break;
+                }
+                default: {
+                    break;
+                }
+            }
+            document.getElementById("result").innerText = result;
+        }
+
+    </script>
 
 </body>
-</html> 
+
+</html>
