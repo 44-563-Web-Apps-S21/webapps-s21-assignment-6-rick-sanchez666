@@ -10,7 +10,7 @@
     integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
     crossorigin="anonymous"></script>
 <style>
-    #result {
+    #result, #result2 {
         display: none;
     }
     body {
@@ -51,10 +51,17 @@
                     <label for="times" class="form-check-label">*</label>
                 </div>
                 <div class="form-check">
+
+                    <input type="radio" id="minus" class="form-check-input" name="operation" onclick="processRadio()" value="minus">
+                    <label for="minus" class="form-check-label">-</label>
+                </div>
+                <div class="form-check">
                     <input type="radio" id="divide" class="form-check-input" name="operation" onclick="processRadio()" value="divide">
                     <label for="divide" class="form-check-label">/</label>
                 </div>
             </form>
+        <p id="result2" class="alert alert-primary col-auto"> </p>
+
 
         </section>
 
@@ -65,7 +72,7 @@
         let baseEl = document.getElementById("base");
         let expEl = document.getElementById("exponent");
         document.getElementById('computeButton').addEventListener('click', function() {
-            displayResult();
+            displayResult("result");
         })
         function powers() {
             let base = baseEl.value;
@@ -109,12 +116,12 @@
                     break;
                 }
             }
-            document.getElementById("result").innerText = result;
-            displayResult();
+            document.getElementById("result2").innerText = result;
+            displayResult("result2");
         }
 
-        function displayResult() {
-            document.getElementById("result").style.display = "block"; 
+        function displayResult(id) {
+            document.getElementById(id).style.display = "block"; 
         }
 
         
